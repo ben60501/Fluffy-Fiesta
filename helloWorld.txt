@@ -1,0 +1,11 @@
+vars {
+    String(hello) = "Hello"
+    String(world) = "World"
+    Int(five) = 5
+}
+
+void first() {
+    System.print("Hello World")
+    System.print("Hello Again")
+    System.print(hello)
+}

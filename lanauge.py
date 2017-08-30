@@ -56,12 +56,9 @@ def find_next_closing_bracket(opening_bracket):
 
     return closing_bracket
 
-# Opens the program
-with open('helloWorld.txt') as program:
-    # Stores all the lines in the array "lines"
-    lines = program.readlines()
+
+def clean_program():
     empty_lines = []
-    # Removes \n from each line
     for line_num in range(len(lines)):
         lines[line_num] = lines[line_num].replace('\n', '')
         lines[line_num] = lines[line_num].replace('    ', '')
@@ -74,5 +71,13 @@ with open('helloWorld.txt') as program:
     for empty_line in empty_lines:
         del lines[empty_line]
 
-read_functions = Functions()
-read_functions.first()
+# Opens the program
+with open('helloWorld.txt') as program:
+    # Stores all the lines in the array "lines"
+    lines = program.readlines()
+    clean_program()
+
+
+if __name__ == "__main__":
+    read_functions = Functions()
+    read_functions.first()

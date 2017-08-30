@@ -14,7 +14,6 @@ class System(object):
 
     def find_function(self):
         if self.func == 'print':
-            print 'Should Print'
             self.print_output(self.parameters)
 
     def print_output(self, output):
@@ -27,4 +26,5 @@ class System(object):
         else:
             from lanauge import Variables
             variables = Variables()
-            print variables.find_variable_with_name(output)
+            # Finds the Variable with the given name and prints it
+            print 'Output at', str(str(time.time()) + ':'), variables.find_variable_with_name(output)

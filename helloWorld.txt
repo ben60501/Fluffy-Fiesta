@@ -8,4 +8,5 @@ void first() {
     System.print("Hello World")
     System.print("Hello Again")
     System.print(hello)
+    System.print(world)
 }

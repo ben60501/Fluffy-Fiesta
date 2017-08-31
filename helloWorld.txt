@@ -9,4 +9,7 @@ void first() {
     System.print("Hello Again")
     System.print(hello)
     System.print(world)
+    System.print(hello + world)
+    System.print(hello + " " + world)
+    System.print("Hello" + " " + "World"
 }

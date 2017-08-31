@@ -39,7 +39,8 @@ class Variables(object):
                 # Splits the string to get the name of the Variable
                 var_name = var.split('(')[1].split(')')[0]
                 # Splits the string to get the value of the Variable
-                var_val = var.split('=')[1].replace(' ', '').replace('"', '')
+                var_val = var.split('=')[1].replace('"', '')
+                var_val = var_val[1:]
                 self.strings.update({var_name: var_val})
 
     def store_ints(self):

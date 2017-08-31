@@ -16,7 +16,25 @@ class System(object):
         if self.func == 'print':
             self.print_output(self.parameters)
 
-    def print_output(self, output):
+    def print_output(self, output_original):
+        output_array = output_original.split('+')
+        output = output_array[0]
+        if len(output_array) > 1:
+            running_output = ''
+            for item in output_array:
+                if '"' in item:
+                    if item[0] == ' ':
+                        item = item[1:]
+                    if item[-1] == ' ':
+                        item = item[:-1]
+                    item = item.replace('"', '')
+                    running_output += item
+                else:
+                    from lanauge import Variables
+                    variables = Variables()
+                    running_output += variables.find_variable_with_name(item.replace(' ', ''))
+            output = '"' + running_output + '"'
+
         # Checks if the output is a string or a variable
         if output[0] == '"':
             # Removes the double quotes

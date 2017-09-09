@@ -2,14 +2,16 @@ vars {
     String(hello) = "Hello"
     String(world) = "World"
     Int(five) = 5
+    Int(three) = 3
 }
 
 void first() {
     System.print("Hello World")
-    System.print("Hello Again")
-    System.print(hello)
-    System.print(world)
-    System.print(hello + world)
-    System.print(hello + " " + world)
-    System.print("Hello" + " " + "World"
+    # System.print("Hello Again")
+    # System.print(hello)
+    # System.print(world)
+    # System.print(hello + world)
+    # System.print(hello + " " + world)
+    # System.print("Hello" + " " + "World"
+    # System.print(five + three)
 }

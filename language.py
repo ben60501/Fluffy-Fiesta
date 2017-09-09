@@ -28,9 +28,15 @@ class Variables(object):
         self.end_of_vars = find_next_closing_bracket(self.start_of_vars)
         self.vars = lines[self.start_of_vars + 1: self.end_of_vars]
         self.store_strings()
+        self.store_ints()
 
     def find_variable_with_name(self, name):
-        return self.strings[str(name)]
+        return_value = ''
+        if str(name) in self.strings:
+            return_value = self.strings[str(name)]
+        elif str(name) in self.ints:
+            return_value = self.ints[str(name)]
+        return return_value
 
     def store_strings(self):
         for var in self.vars:
@@ -44,7 +50,15 @@ class Variables(object):
                 self.strings.update({var_name: var_val})
 
     def store_ints(self):
-        pass
+        for var in self.vars:
+            # Looks for the Variables with the keyword "Int"
+            if var[:3] == 'Int':
+                # Splits the string to get the name of the Variable
+                var_name = var.split('(')[1].split(')')[0]
+                # Splits the string to get the value of the Variable
+                var_val = var.split('=')[1].replace('"', '')
+                var_val = var_val[1:]
+                self.ints.update({var_name: int(var_val)})
 
 
 def find_next_closing_bracket(opening_bracket):
@@ -64,7 +78,7 @@ def clean_program():
         lines[line_num] = lines[line_num].replace('\n', '')
         lines[line_num] = lines[line_num].replace('    ', '')
         # Lists all of the blank lines
-        if lines[line_num] == '':
+        if lines[line_num] == '' or lines[line_num][0] == '#':
             empty_lines.append(line_num)
     # Reverses the list of empty lines to avoid index changes
     empty_lines = list(reversed(empty_lines))
@@ -78,7 +92,7 @@ with open('helloWorld.txt') as program:
     lines = program.readlines()
     clean_program()
 
-
+# Makes sure it only runs once
 if __name__ == "__main__":
     read_functions = Functions()
     read_functions.first()
